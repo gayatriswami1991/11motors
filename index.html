@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luxury & Used Cars in Nairobi | Book a Test Drive | Eleven Motors</title>
+<meta name="description" content="Inspected luxury and used cars in Nairobi: Land Cruiser, Range Rover, Mercedes, Prado, RAV4 and more. Book a test drive, get a free import quote from Japan, UK or Australia.">
+<link rel="canonical" href="https://elevenmotorske.com/">
+<style>
+:root{--bg:#0b0b0c;--card:#141416;--line:#26262a;--txt:#f3f3f1;--mut:#a3a3a8;--red:#c4161c;--red2:#e11d24;--ok:#25d366;--r:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:72px}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:8px}
+.sub{color:var(--mut);margin-bottom:28px;max-width:60ch}
+section{padding:64px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:10px;border:0;font:600 1rem inherit;font-family:inherit;cursor:pointer;text-decoration:none;transition:.15s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red2)}
+.btn-wa{background:var(--ok);color:#06220f}.btn-wa:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--txt);border:1px solid #3a3a40}.btn-ghost:hover{border-color:#fff}
+/* top bar */
+.top{position:sticky;top:0;z-index:30;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:.04em;text-decoration:none}.logo b{color:var(--red2)}
+.top nav{display:flex;gap:10px;align-items:center}
+.top .tel{color:var(--mut);text-decoration:none;font-size:.95rem}
+/* hero */
+.hero{position:relative;padding:56px 0 64px;background:linear-gradient(90deg,rgba(11,11,12,.96) 30%,rgba(11,11,12,.55)),url(assets/img/mercedes-s-class.jpg) center/cover}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid #444;padding:5px 10px;border-radius:99px;color:#ddd;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.5rem);margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--red2)}
+.hero p.lead{color:#cfcfd2;font-size:1.1rem;max-width:52ch;margin-bottom:22px}
+.ticks{list-style:none;display:grid;gap:8px;margin-bottom:26px}
+.ticks li::before{content:"✓";color:var(--red2);font-weight:800;margin-right:10px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.formcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.formcard h2{font-size:1.4rem}
+.formcard p{color:var(--mut);font-size:.92rem;margin-bottom:16px}
+label{display:block;font-size:.8rem;color:var(--mut);margin:12px 0 5px}
+input,select,textarea{width:100%;padding:13px 14px;background:#0e0e10;border:1px solid #33333a;border-radius:9px;color:var(--txt);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);border-color:transparent}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.formcard .btn{width:100%;margin-top:18px}
+.fine{font-size:.76rem;color:var(--mut);margin-top:10px;text-align:center}
+.err{color:#ff7b7b;font-size:.82rem;margin-top:6px;display:none}
+/* trust strip */
+.strip{background:#101012;border-block:1px solid var(--line);padding:22px 0}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.strip b{display:block;font-size:1.5rem}.strip span{color:var(--mut);font-size:.88rem}
+/* fleet */
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.chip{padding:9px 16px;border-radius:99px;border:1px solid #3a3a40;background:transparent;color:var(--txt);cursor:pointer;font:inherit;font-size:.92rem}
+.chip.on{background:var(--red);border-color:var(--red)}
+.filters select{width:auto;padding:9px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.car{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.car img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.car .in{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.car h3{font-size:1.1rem}
+.meta{color:var(--mut);font-size:.85rem}
+.price{font-weight:700;font-size:1.05rem;margin-top:4px}
+.car .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:12px}
+.car .btn{padding:11px 8px;font-size:.88rem}
+.empty{display:none;padding:30px;border:1px dashed #3a3a40;border-radius:var(--r);text-align:center;color:var(--mut)}
+.more{margin-top:24px;text-align:center}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.step i{font-style:normal;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);font-weight:700;margin-bottom:12px}
+.step p{color:var(--mut);font-size:.92rem;margin-top:6px}
+/* import */
+.import{background:#101012;border-block:1px solid var(--line)}
+.import .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.import ul{list-style:none;display:grid;gap:10px;margin:18px 0 24px}
+.import li::before{content:"→";color:var(--red2);margin-right:10px}
+.reel{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.reel video{width:100%;aspect-ratio:16/10;object-fit:cover}
+/* proof */
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;max-width:720px}
+.stars{color:#f5b301;letter-spacing:3px;margin-bottom:10px}
+.quote p{font-size:1.1rem;margin-bottom:12px}
+.quote small{color:var(--mut)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}
+.gallery img{aspect-ratio:1;object-fit:cover;border-radius:10px;width:100%}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::after{content:"+";float:right;color:var(--red2);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--mut);margin-top:10px;max-width:70ch}
+/* visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.loc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.loc p{color:var(--mut);margin:6px 0 14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:.85rem;text-align:center}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.modal.open{display:flex}
+.modal .formcard{width:100%;max-width:460px;max-height:92vh;overflow:auto;position:relative}
+.x{position:absolute;right:14px;top:10px;background:none;border:0;color:var(--mut);font-size:1.8rem;cursor:pointer}
+.ok{display:none;text-align:center;padding:10px 0}
+.ok h3{margin-bottom:8px}
+/* sticky mobile bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px;background:rgba(11,11,12,.96);border-top:1px solid var(--line)}
+.bar .btn{padding:12px 6px;font-size:.9rem}
+@media(min-width:900px){.bar{display:none}body{padding-bottom:0}}
+@media(max-width:900px){
+ .hero .wrap,.import .wrap,.visit .wrap{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}.strip .wrap{grid-template-columns:1fr 1fr}
+ .gallery{grid-template-columns:1fr 1fr}.top .tel{display:none}
+ section{padding:44px 0}
+}
+@media(max-width:480px){.steps{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top">ELEVEN <b>MOTORS</b></a>
+  <nav>
+    <a class="tel" href="tel:+254116101111">+254 116 101 111</a>
+    <button class="btn btn-red" data-td>Book test drive</button>
+  </nav>
+</div></header>
+
+<main id="top">
+<!-- HERO -->
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Nairobi · Inspected · Ready to drive</span>
+    <h1>Your next <em>luxury or used car</em> in Kenya, without the guesswork.</h1>
+    <p class="lead">50+ inspected cars in stock at two Nairobi showrooms. Not seeing the one you want? We import to order from Japan, the UK and Australia.</p>
+    <ul class="ticks">
+      <li>Every car inspected and cleaned before handover</li>
+      <li>Test drive any car, same day or on a slot you choose</li>
+      <li>Bank finance and hire purchase options available</li>
+    </ul>
+    <div class="cta-row">
+      <button class="btn btn-red" data-td>Book a test drive</button>
+      <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'd like to know what cars you have available.">WhatsApp us now</a>
+    </div>
+  </div>
+
+  <form class="formcard" id="quick" novalidate>
+    <h2>Get the right car, fast</h2>
+    <p>Tell us what you want. A sales advisor replies the same day with matching cars and prices.</p>
+    <label for="q-name">Your name</label>
+    <input id="q-name" name="name" autocomplete="name" required>
+    <label for="q-phone">Phone / WhatsApp</label>
+    <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
+    <div class="err" id="q-err">Please enter your name and a valid phone number.</div>
+    <div class="row2">
+      <div><label for="q-type">I'm looking for</label>
+        <select id="q-type" name="type"><option>SUV</option><option>Sedan</option><option>Hatchback</option><option>Pickup</option><option>Not sure yet</option></select></div>
+      <div><label for="q-budget">Budget (KES)</label>
+        <select id="q-budget" name="budget"><option>Under 2M</option><option>2M – 4M</option><option>4M – 7M</option><option>7M – 15M</option><option>15M+</option></select></div>
+    </div>
+    <label for="q-how">How are you paying?</label>
+    <select id="q-how" name="how"><option>Cash</option><option>Bank finance</option><option>Hire purchase</option><option>Trade-in + top up</option></select>
+    <button class="btn btn-red" type="submit">Send me matching cars</button>
+    <p class="fine">We reply on WhatsApp. No spam, no obligation.</p>
+  </form>
+</div></div>
+
+<!-- TRUST -->
+<div class="strip"><div class="wrap">
+  <div><b>10+ years</b><span>importing from 5 countries</span></div>
+  <div><b>50+ cars</b><span>in stock at any time</span></div>
+  <div><b>2 showrooms</b><span>Two Rivers · Kiambu Road</span></div>
+  <div><b>Inspected</b><span>checked and cleaned before delivery</span></div>
+</div></div>
+
+<!-- FLEET -->
+<section id="cars"><div class="wrap">
+  <h2>Find your car</h2>
+  <p class="sub">Filter by body type or make. See one you like? Book a test drive in 30 seconds.</p>
+  <div class="filters" id="filters">
+    <button class="chip on" data-type="all">All</button>
+    <button class="chip" data-type="SUV">SUV</button>
+    <button class="chip" data-type="Sedan">Sedan</button>
+    <button class="chip" data-type="Hatchback">Hatchback</button>
+    <select id="make" aria-label="Filter by make"><option value="all">All makes</option></select>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">No match right now. We can find it for you.
+    <div style="margin-top:14px"><a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car that's not on your page. Can you help me find one?">Ask us to source it</a></div></div>
+  <div class="more"><a class="btn btn-ghost" href="https://elevenmotorske.com/vehicles">See the full stock on elevenmotorske.com →</a></div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section style="padding-top:0"><div class="wrap">
+  <h2>Buying takes four steps</h2>
+  <p class="sub">Simple and transparent from first message to keys in hand.</p>
+  <div class="steps">
+    <div class="step"><i>1</i><h3>Choose</h3><p>Pick from stock or tell us what you want.</p></div>
+    <div class="step"><i>2</i><h3>Test drive</h3><p>Book a slot at Two Rivers or Kiambu Road.</p></div>
+    <div class="step"><i>3</i><h3>Pay your way</h3><p>Cash, bank finance or hire purchase. Reserve a car to hold it.</p></div>
+    <div class="step"><i>4</i><h3>Drive home</h3><p>We handle registration and transfer with you.</p></div>
+  </div>
+</div></section>
+
+<!-- IMPORT -->
+<section class="import"><div class="wrap">
+  <div>
+    <h2>Can't find it? We'll import it.</h2>
+    <p class="sub" style="margin-bottom:0">Agents in Japan, the UK, Australia, South Africa and Singapore search and bid for you.</p>
+    <ul>
+      <li>Send your spec, get an estimated landed cost</li>
+      <li>20% deposit starts the search</li>
+      <li>We handle shipping, port clearance and delivery to Nairobi</li>
+      <li>Final inspection and clean before handover</li>
+    </ul>
+    <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'd like a free import quote. Car I want: ">Get a free import quote</a>
+  </div>
+  <div class="reel"><video src="assets/video/showroom-reel.mp4" poster="assets/img/reel-poster.jpg" muted loop playsinline preload="none" id="reel"></video></div>
+</div></section>
+
+<!-- PROOF -->
+<section><div class="wrap">
+  <h2>What buyers say</h2>
+  <p class="sub">Real Google review from a client.</p>
+  <div class="quote">
+    <div class="stars" aria-label="5 stars">★★★★★</div>
+    <p>“I had an awesome experience working with Carol, got a Prado J150. Despite handling everything virtually she delivered beyond my expectations. Highly recommended.”</p>
+    <small>Edwin Odinga · Google review</small>
+  </div>
+  <div class="gallery">
+    <img loading="lazy" src="assets/img/golf-front.jpg" alt="White Volkswagen Golf at the Eleven Motors showroom">
+    <img loading="lazy" src="assets/img/land-cruiser-interior.jpg" alt="Toyota Land Cruiser interior with JBL audio">
+    <img loading="lazy" src="assets/img/range-rover-sport.jpg" alt="Black Range Rover Sport">
+    <img loading="lazy" src="assets/img/s-class-seats.jpg" alt="Mercedes S-Class diamond quilted rear seats">
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section style="padding-top:0"><div class="wrap" style="max-width:820px">
+  <h2>Quick answers</h2>
+  <p class="sub">Questions we get every day.</p>
+  <details><summary>How do I reserve a car?</summary><p>Message us on WhatsApp or book a test drive. A sales advisor confirms availability and explains the reservation steps.</p></details>
+  <details><summary>Do you offer bank finance or hire purchase?</summary><p>Yes, both are available. Tell us your budget in the form above and we'll explain the options for the car you want.</p></details>
+  <details><summary>How does importing work?</summary><p>Share your requirements, get an estimated landed cost, pay a 20% deposit, and we search and bid in the source country. Once you pick a car you pay a further 40%. We then handle shipping, clearance and delivery.</p></details>
+  <details><summary>How long does registration and transfer take?</summary><p>Ask your advisor for the current timeline on the specific car. It depends on the vehicle and paperwork.</p></details>
+  <details><summary>Where are your showrooms?</summary><p>Southern Office Tower, Two Rivers on Limuru Road, and near Motorhub on Kiambu Road, Nairobi.</p></details>
+</div></section>
+
+<!-- VISIT -->
+<section class="visit" style="padding-top:0"><div class="wrap">
+  <div class="loc"><h3>Two Rivers</h3><p>Southern Office Tower, Limuru Road, Nairobi</p>
+    <a class="btn btn-ghost" href="https://maps.app.goo.gl/tAG1kNimK8NiL6Am8" target="_blank" rel="noopener">Get directions</a></div>
+  <div class="loc"><h3>Kiambu Road</h3><p>Near Motorhub, Kiambu Road, Nairobi</p>
+    <a class="btn btn-ghost" href="https://maps.app.goo.gl/xm31UaH3ESdVkrCf9" target="_blank" rel="noopener">Get directions</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  © 2026 Eleven Motors Limited · <a href="tel:+254116101111">+254-116-101-111</a> · <a href="mailto:sales@elevenmotorske.com">sales@elevenmotorske.com</a> · <a href="https://elevenmotorske.com/">elevenmotorske.com</a>
+  <br>Hours: <span id="hours">Monday to Saturday, 9am to 5pm</span>
+</div></footer>
+
+<!-- sticky mobile bar -->
+<div class="bar">
+  <a class="btn btn-ghost" href="tel:+254116101111">Call</a>
+  <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm interested in a car.">WhatsApp</a>
+  <button class="btn btn-red" data-td>Book test drive</button>
+</div>
+
+<!-- test drive modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="td-title">
+  <form class="formcard" id="td" novalidate>
+    <button class="x" type="button" id="close" aria-label="Close">×</button>
+    <div id="td-body">
+      <h2 id="td-title">Book a test drive</h2>
+      <p>Pick a car, a day and a showroom. We confirm on WhatsApp.</p>
+      <label for="t-car">Car</label>
+      <select id="t-car" name="car"></select>
+      <div class="row2">
+        <div><label for="t-date">Date</label><input id="t-date" name="date" type="date" required></div>
+        <div><label for="t-time">Time</label>
+          <select id="t-time" name="time"><option>9:00 am</option><option>10:00 am</option><option>11:00 am</option><option>12:00 pm</option><option>2:00 pm</option><option>3:00 pm</option><option>4:00 pm</option></select></div>
+      </div>
+      <label for="t-loc">Showroom</label>
+      <select id="t-loc" name="loc"><option>Two Rivers (Limuru Road)</option><option>Kiambu Road (near Motorhub)</option></select>
+      <label for="t-name">Your name</label><input id="t-name" name="name" autocomplete="name" required>
+      <label for="t-phone">Phone / WhatsApp</label><input id="t-phone" name="phone" type="tel" autocomplete="tel" required>
+      <div class="err" id="t-err">Please fill in your name, phone and a date (not a Sunday).</div>
+      <button class="btn btn-red" type="submit">Confirm my test drive</button>
+      <p class="fine">Bring your driving licence. Slots are confirmed by our team.</p>
+    </div>
+    <div class="ok" id="td-ok"><h3>Almost done ✅</h3><p>WhatsApp should open with your booking. Send the message and we'll confirm your slot.</p>
+      <a class="btn btn-wa" id="td-wa" style="margin-top:16px" target="_blank" rel="noopener">Open WhatsApp</a></div>
+  </form>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoDealer","name":"Eleven Motors Limited","url":"https://elevenmotorske.com/","telephone":"+254116101111","email":"sales@elevenmotorske.com","description":"Nairobi car dealer selling inspected used and luxury cars, with vehicle import from Japan, the UK and Australia.","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"17:00"},"address":[{"@type":"PostalAddress","streetAddress":"Southern Office Tower, Two Rivers, Limuru Road","addressLocality":"Nairobi","addressCountry":"KE"},{"@type":"PostalAddress","streetAddress":"Near Motorhub, Kiambu Road","addressLocality":"Nairobi","addressCountry":"KE"}]}
+</script>
+
+<script>
+/* ===== EDIT ME ===== */
+const CONFIG = {
+  whatsapp: "254116101111",          // digits only, country code first
+  // Optional: paste a Formspree / Make / Zapier webhook URL to also store every lead.
+  leadEndpoint: "",
+  site: "https://elevenmotorske.com/vehicles"
+};
+// Stock shown on the page. price: null shows "Price on request".
+const CARS = [
+  {id:"lc300-gr",  make:"Toyota",        name:"Toyota Land Cruiser LC300 GR Sport", type:"SUV",       img:"land-cruiser-gr.jpg",    price:null,     meta:"Automatic · JBL audio · 4WD"},
+  {id:"rr-vogue",  make:"Land Rover",    name:"Range Rover Vogue 1st Edition",      type:"SUV",       img:"range-rover-rear.jpg",   price:32000000, meta:"2022 · 27,000 km · 3000 cc"},
+  {id:"rr-sport",  make:"Land Rover",    name:"Range Rover Sport",                  type:"SUV",       img:"range-rover-sport.jpg",  price:null,     meta:"Black · Premium interior"},
+  {id:"s-class",   make:"Mercedes-Benz", name:"Mercedes-Benz S-Class",              type:"Sedan",     img:"mercedes-s-class.jpg",   price:null,     meta:"Diamond-quilted leather · Ambient lighting"},
+  {id:"golf",      make:"Volkswagen",    name:"Volkswagen Golf",                    type:"Hatchback", img:"golf-front.jpg",         price:null,     meta:"White · Alloys · Inspected"}
+];
+/* ==================== */
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const kes=n=>"KES "+n.toLocaleString("en-KE");
+const waLink=t=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`;
+function track(ev,d){ try{ (window.dataLayer=window.dataLayer||[]).push({event:ev,...d}) }catch(e){} }
+function send(payload){
+  if(!CONFIG.leadEndpoint) return;
+  fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)}).catch(()=>{});
+}
+
+/* WhatsApp links */
+$$("[data-wa]").forEach(a=>{a.href=waLink(a.dataset.wa);a.target="_blank";a.rel="noopener";a.addEventListener("click",()=>track("whatsapp_click",{}))});
+
+/* Fleet */
+let curType="all";
+const makes=[...new Set(CARS.map(c=>c.make))].sort();
+makes.forEach(m=>$("#make").insertAdjacentHTML("beforeend",`<option>${m}</option>`));
+function render(){
+  const mk=$("#make").value;
+  const list=CARS.filter(c=>(curType==="all"||c.type===curType)&&(mk==="all"||c.make===mk));
+  $("#grid").innerHTML=list.map(c=>`
+   <article class="car"><img loading="lazy" src="assets/img/${c.img}" alt="${c.name} for sale in Nairobi">
+    <div class="in"><h3>${c.name}</h3><div class="meta">${c.meta}</div>
+    <div class="price">${c.price?kes(c.price):"Price on request"}</div>
+    <div class="acts"><button class="btn btn-red" data-td="${c.id}">Test drive</button>
+    <a class="btn btn-wa" data-wa2="${c.name}${c.price?" ("+kes(c.price)+")":""}">Ask price</a></div></div></article>`).join("");
+  $("#empty").style.display=list.length?"none":"block";
+  $$("[data-wa2]").forEach(a=>{a.href=waLink(`Hi Eleven Motors, I'm interested in the ${a.dataset.wa2}. Is it still available and what is the best price?`);a.target="_blank";a.rel="noopener"});
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;$$(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");curType=b.dataset.type;render();track("filter",{type:curType})});
+$("#make").addEventListener("change",render);
+render();
+
+/* Quick lead form -> WhatsApp (+ optional endpoint) */
+$("#quick").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=Object.fromEntries(new FormData(e.target)), ok=f.name.trim().length>1&&f.phone.replace(/\D/g,"").length>=9;
+  $("#q-err").style.display=ok?"none":"block"; if(!ok)return;
+  send({source:"quick-form",...f}); track("lead",{form:"quick"});
+  const msg=`Hi Eleven Motors, I'm ${f.name}. I'm looking for a ${f.type}, budget ${f.budget}, paying by ${f.how}. Please send matching cars. My number: ${f.phone}`;
+  window.open(waLink(msg),"_blank");
+  e.target.reset();
+});
+
+/* Test drive modal */
+const modal=$("#modal");
+$("#t-car").innerHTML=CARS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")+"<option value=\"other\">Another car / not sure yet</option>";
+const d=new Date();d.setDate(d.getDate()+1);$("#t-date").min=$("#t-date").value=d.toISOString().slice(0,10);
+function openTD(id){
+  $("#td-body").style.display="";$("#td-ok").style.display="none";$("#t-err").style.display="none";
+  if(id&&id!=="")$("#t-car").value=id; modal.classList.add("open"); track("open_test_drive",{car:id||""});
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-td]");if(b){e.preventDefault();openTD(b.dataset.td)}});
+$("#close").onclick=()=>modal.classList.remove("open");
+modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("open")});
+$("#td").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=Object.fromEntries(new FormData(e.target)), day=f.date?new Date(f.date).getDay():-1;
+  const ok=f.name.trim().length>1&&f.phone.replace(/\D/g,"").length>=9&&f.date&&day!==0;
+  $("#t-err").style.display=ok?"none":"block"; if(!ok)return;
+  const car=$("#t-car").selectedOptions[0].textContent;
+  const msg=`Hi Eleven Motors, I'd like to book a test drive.\nCar: ${car}\nDate: ${f.date} at ${f.time}\nShowroom: ${f.loc}\nName: ${f.name}\nPhone: ${f.phone}`;
+  send({source:"test-drive",...f,car}); track("lead",{form:"test_drive",car});
+  $("#td-wa").href=waLink(msg); $("#td-body").style.display="none"; $("#td-ok").style.display="block";
+  window.open(waLink(msg),"_blank");
+});
+
+/* lazy-play the reel only when visible */
+const reel=$("#reel");
+if("IntersectionObserver" in window){new IntersectionObserver(([en])=>{en.isIntersecting?reel.play().catch(()=>{}):reel.pause()},{threshold:.4}).observe(reel)}
+</script>
+</body>
+</html>
