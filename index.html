@@ -6,114 +6,124 @@
 <title>Luxury & Used Cars in Nairobi | Book a Test Drive | Eleven Motors</title>
 <meta name="description" content="Inspected luxury and used cars in Nairobi: Land Cruiser, Range Rover, Mercedes, Prado, RAV4 and more. Book a test drive, get a free import quote from Japan, UK or Australia.">
 <link rel="canonical" href="https://elevenmotorske.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Sofia+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0b0c;--card:#141416;--line:#26262a;--txt:#f3f3f1;--mut:#a3a3a8;--red:#c4161c;--red2:#e11d24;--ok:#25d366;--r:14px}
+/* Matches elevenmotorske.com: black header, white sections, maroon buttons.
+   Headings use a serif close to the site's "tobiasMedium"; body uses Sofia Sans.
+   To use the real font, add an @font-face for it and put it first in --serif. */
+:root{--serif:"tobiasMedium","Newsreader",Georgia,serif;--sans:"Sofia Sans",system-ui,sans-serif;
+--ink:#0b0b0b;--bg:#fff;--alt:#f5f4f2;--line:#e4e2de;--mut:#6b6b70;--red:#720000;--red2:#8f0a0a;--ok:#25d366;--r:4px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:72px}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.6 var(--sans);padding-bottom:72px}
 img,video{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-h1,h2,h3{line-height:1.15;letter-spacing:-.01em}
-h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:8px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.005em}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:8px}
+h3{font-size:1.2rem}
 .sub{color:var(--mut);margin-bottom:28px;max-width:60ch}
-section{padding:64px 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:10px;border:0;font:600 1rem inherit;font-family:inherit;cursor:pointer;text-decoration:none;transition:.15s}
+section{padding:68px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:var(--r);border:0;font:500 .92rem var(--sans);letter-spacing:.03em;cursor:pointer;text-decoration:none;transition:.15s}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red2)}
-.btn-wa{background:var(--ok);color:#06220f}.btn-wa:hover{filter:brightness(1.08)}
-.btn-ghost{background:transparent;color:var(--txt);border:1px solid #3a3a40}.btn-ghost:hover{border-color:#fff}
-/* top bar */
-.top{position:sticky;top:0;z-index:30;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:800;letter-spacing:.04em;text-decoration:none}.logo b{color:var(--red2)}
-.top nav{display:flex;gap:10px;align-items:center}
-.top .tel{color:var(--mut);text-decoration:none;font-size:.95rem}
+.btn-wa{background:var(--ok);color:#06220f}.btn-wa:hover{filter:brightness(1.07)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #bdbab4}.btn-ghost:hover{border-color:var(--ink)}
+.dark .btn-ghost,.top .btn-ghost,.bar .btn-ghost{color:#fff;border-color:#555}
+/* header */
+.top{position:sticky;top:0;z-index:30;background:#000;border-bottom:1px solid #1d1d1d}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo img{height:40px;width:auto}
+.top nav{display:flex;gap:18px;align-items:center}
+.top .tel{color:#ddd;text-decoration:none;font-size:.9rem;letter-spacing:.04em}
+.top .btn{padding:11px 18px}
 /* hero */
-.hero{position:relative;padding:56px 0 64px;background:linear-gradient(90deg,rgba(11,11,12,.96) 30%,rgba(11,11,12,.55)),url(assets/img/mercedes-s-class.jpg) center/cover}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
-.tag{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid #444;padding:5px 10px;border-radius:99px;color:#ddd;margin-bottom:16px}
-.hero h1{font-size:clamp(2rem,5.2vw,3.5rem);margin-bottom:16px}
-.hero h1 em{font-style:normal;color:var(--red2)}
-.hero p.lead{color:#cfcfd2;font-size:1.1rem;max-width:52ch;margin-bottom:22px}
-.ticks{list-style:none;display:grid;gap:8px;margin-bottom:26px}
-.ticks li::before{content:"✓";color:var(--red2);font-weight:800;margin-right:10px}
+.hero{position:relative;padding:60px 0 68px;color:#fff;background:linear-gradient(90deg,rgba(0,0,0,.9) 28%,rgba(0,0,0,.5)),url(assets/img/mercedes-s-class.jpg) center/cover}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;background:#000;border:1px solid #555;padding:5px 11px;color:#eee;margin-bottom:18px}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.6rem);margin-bottom:16px}
+.hero h1 em{font-style:normal;color:#e8b4b4}
+.hero p.lead{color:#e2e2e2;font-size:1.12rem;max-width:52ch;margin-bottom:22px}
+.ticks{list-style:none;display:grid;gap:8px;margin-bottom:28px}
+.ticks li::before{content:"✓";color:#e8b4b4;font-weight:700;margin-right:10px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.formcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.formcard h2{font-size:1.4rem}
-.formcard p{color:var(--mut);font-size:.92rem;margin-bottom:16px}
-label{display:block;font-size:.8rem;color:var(--mut);margin:12px 0 5px}
-input,select,textarea{width:100%;padding:13px 14px;background:#0e0e10;border:1px solid #33333a;border-radius:9px;color:var(--txt);font:inherit}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--red);border-color:transparent}
+.formcard{background:#fff;color:var(--ink);border-radius:var(--r);padding:26px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.formcard h2{font-size:1.5rem}
+.formcard p{color:var(--mut);font-size:.95rem;margin-bottom:14px}
+label{display:block;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:12px 0 5px}
+input,select{width:100%;padding:13px 14px;background:#fff;border:1px solid #cfccc6;border-radius:var(--r);color:var(--ink);font:300 1rem var(--sans)}
+input:focus,select:focus{outline:2px solid var(--red);border-color:transparent}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .formcard .btn{width:100%;margin-top:18px}
-.fine{font-size:.76rem;color:var(--mut);margin-top:10px;text-align:center}
-.err{color:#ff7b7b;font-size:.82rem;margin-top:6px;display:none}
-/* trust strip */
-.strip{background:#101012;border-block:1px solid var(--line);padding:22px 0}
+.fine{font-size:.78rem;color:var(--mut);margin-top:10px;text-align:center}
+.err{color:#b00020;font-size:.85rem;margin-top:6px;display:none}
+/* trust */
+.strip{background:#000;color:#fff;padding:24px 0}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
-.strip b{display:block;font-size:1.5rem}.strip span{color:var(--mut);font-size:.88rem}
+.strip b{display:block;font:400 1.6rem var(--serif)}.strip span{color:#aaa;font-size:.88rem}
 /* fleet */
 .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
-.chip{padding:9px 16px;border-radius:99px;border:1px solid #3a3a40;background:transparent;color:var(--txt);cursor:pointer;font:inherit;font-size:.92rem}
-.chip.on{background:var(--red);border-color:var(--red)}
-.filters select{width:auto;padding:9px 12px}
+.chip{padding:9px 18px;border-radius:99px;border:1px solid #bdbab4;background:#fff;color:var(--ink);cursor:pointer;font:400 .92rem var(--sans)}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.filters select{width:auto;padding:9px 12px;border-radius:99px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.car{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.car{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
 .car img{aspect-ratio:4/5;object-fit:cover;width:100%}
 .car .in{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
-.car h3{font-size:1.1rem}
-.meta{color:var(--mut);font-size:.85rem}
-.price{font-weight:700;font-size:1.05rem;margin-top:4px}
+.meta{color:var(--mut);font-size:.88rem}
+.price{font:500 1.05rem var(--sans);margin-top:4px}
 .car .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:12px}
-.car .btn{padding:11px 8px;font-size:.88rem}
-.empty{display:none;padding:30px;border:1px dashed #3a3a40;border-radius:var(--r);text-align:center;color:var(--mut)}
-.more{margin-top:24px;text-align:center}
+.car .btn{padding:11px 8px;font-size:.85rem}
+.empty{display:none;padding:30px;border:1px dashed #bdbab4;border-radius:var(--r);text-align:center;color:var(--mut)}
+.more{margin-top:26px;text-align:center}
+.alt{background:var(--alt)}
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.step i{font-style:normal;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);font-weight:700;margin-bottom:12px}
-.step p{color:var(--mut);font-size:.92rem;margin-top:6px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.step i{font:400 1rem var(--serif);font-style:normal;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;margin-bottom:12px}
+.step p{color:var(--mut);font-size:.95rem;margin-top:6px}
 /* import */
-.import{background:#101012;border-block:1px solid var(--line)}
-.import .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.import ul{list-style:none;display:grid;gap:10px;margin:18px 0 24px}
-.import li::before{content:"→";color:var(--red2);margin-right:10px}
-.reel{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.import{background:#000;color:#fff}
+.import .sub{color:#bbb}
+.import .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.import ul{list-style:none;display:grid;gap:10px;margin:18px 0 26px}
+.import li::before{content:"→";color:#e8b4b4;margin-right:10px}
+.reel{border-radius:var(--r);overflow:hidden}
 .reel video{width:100%;aspect-ratio:16/10;object-fit:cover}
 /* proof */
-.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;max-width:720px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;max-width:720px}
 .stars{color:#f5b301;letter-spacing:3px;margin-bottom:10px}
-.quote p{font-size:1.1rem;margin-bottom:12px}
+.quote p{font:400 1.2rem/1.5 var(--serif);margin-bottom:12px}
 .quote small{color:var(--mut)}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}
-.gallery img{aspect-ratio:1;object-fit:cover;border-radius:10px;width:100%}
+.gallery img{aspect-ratio:1;object-fit:cover;border-radius:var(--r);width:100%}
 /* faq */
 details{border-bottom:1px solid var(--line);padding:16px 0}
-summary{cursor:pointer;font-weight:600;list-style:none}
-summary::after{content:"+";float:right;color:var(--red2);font-size:1.3rem;line-height:1}
+summary{cursor:pointer;font-weight:500;list-style:none}
+summary::after{content:"+";float:right;color:var(--red);font-size:1.4rem;line-height:1}
 details[open] summary::after{content:"–"}
 details p{color:var(--mut);margin-top:10px;max-width:70ch}
 /* visit */
 .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.loc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
-.loc p{color:var(--mut);margin:6px 0 14px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:.85rem;text-align:center}
+.loc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.loc p{color:var(--mut);margin:6px 0 16px}
+footer{background:#000;color:#aaa;padding:30px 0;font-size:.88rem;text-align:center}
 /* modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
 .modal.open{display:flex}
 .modal .formcard{width:100%;max-width:460px;max-height:92vh;overflow:auto;position:relative}
-.x{position:absolute;right:14px;top:10px;background:none;border:0;color:var(--mut);font-size:1.8rem;cursor:pointer}
+.x{position:absolute;right:14px;top:8px;background:none;border:0;color:var(--mut);font-size:1.9rem;cursor:pointer}
 .ok{display:none;text-align:center;padding:10px 0}
 .ok h3{margin-bottom:8px}
-/* sticky mobile bar */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px;background:rgba(11,11,12,.96);border-top:1px solid var(--line)}
-.bar .btn{padding:12px 6px;font-size:.9rem}
+/* mobile bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px;background:#000;border-top:1px solid #222}
+.bar .btn{padding:12px 6px;font-size:.88rem}
 @media(min-width:900px){.bar{display:none}body{padding-bottom:0}}
 @media(max-width:900px){
  .hero .wrap,.import .wrap,.visit .wrap{grid-template-columns:1fr}
  .steps{grid-template-columns:1fr 1fr}.strip .wrap{grid-template-columns:1fr 1fr}
  .gallery{grid-template-columns:1fr 1fr}.top .tel{display:none}
- section{padding:44px 0}
+ section{padding:46px 0}
 }
 @media(max-width:480px){.steps{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
 </style>
@@ -121,7 +131,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
 <body>
 
 <header class="top"><div class="wrap">
-  <a class="logo" href="#top">ELEVEN <b>MOTORS</b></a>
+  <a class="logo" href="#top" aria-label="Eleven Motors home"><img src="assets/img/logo.png" alt="Eleven Motors" width="216" height="40"></a>
   <nav>
     <a class="tel" href="tel:+254116101111">+254 116 101 111</a>
     <button class="btn btn-red" data-td>Book test drive</button>
@@ -193,7 +203,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
 </div></section>
 
 <!-- HOW IT WORKS -->
-<section style="padding-top:0"><div class="wrap">
+<section class="alt"><div class="wrap">
   <h2>Buying takes four steps</h2>
   <p class="sub">Simple and transparent from first message to keys in hand.</p>
   <div class="steps">
@@ -238,7 +248,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
 </div></section>
 
 <!-- FAQ -->
-<section style="padding-top:0"><div class="wrap" style="max-width:820px">
+<section class="alt"><div class="wrap" style="max-width:820px">
   <h2>Quick answers</h2>
   <p class="sub">Questions we get every day.</p>
   <details><summary>How do I reserve a car?</summary><p>Message us on WhatsApp or book a test drive. A sales advisor confirms availability and explains the reservation steps.</p></details>
@@ -249,7 +259,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
 </div></section>
 
 <!-- VISIT -->
-<section class="visit" style="padding-top:0"><div class="wrap">
+<section class="visit"><div class="wrap">
   <div class="loc"><h3>Two Rivers</h3><p>Southern Office Tower, Limuru Road, Nairobi</p>
     <a class="btn btn-ghost" href="https://maps.app.goo.gl/tAG1kNimK8NiL6Am8" target="_blank" rel="noopener">Get directions</a></div>
   <div class="loc"><h3>Kiambu Road</h3><p>Near Motorhub, Kiambu Road, Nairobi</p>
