@@ -88,7 +88,7 @@ input:focus,select:focus{outline:2px solid var(--red);border-color:transparent}
 .chip:hover{border-color:var(--ink)}
 .chip.on{background:var(--red);border-color:var(--red);color:#fff}
 .filters select{width:auto;padding:10px 14px;border-radius:99px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:18px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .car{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.3s;position:relative}
 .car:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
 .car .ph{overflow:hidden;position:relative}
@@ -170,6 +170,45 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 /* mobile bar */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px;background:#000;border-top:1px solid #222}
 .bar .btn{padding:12px 6px;font-size:.88rem}
+
+/* multi-step lead form */
+.prog{height:4px;background:#eee;border-radius:9px;overflow:hidden;margin:-4px 0 14px}
+.prog i{display:block;height:100%;width:33%;background:var(--red);transition:width .35s}
+.slabel{font:500 .72rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);display:flex;justify-content:space-between;margin-bottom:6px}
+.slabel button{background:none;border:0;color:var(--red);font:500 .72rem var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.fs{display:none}.fs.on{display:block;animation:fin .3s}
+@keyframes fin{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.opts button{padding:15px 10px;border:1px solid #cfccc6;background:#fff;border-radius:var(--r);font:400 1rem var(--sans);cursor:pointer;transition:.15s;color:var(--ink)}
+.opts button:hover{border-color:var(--red);background:#fbf3f3}
+.opts button.sel{background:var(--red);border-color:var(--red);color:#fff}
+.opts button:last-child:nth-child(odd){grid-column:span 2}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.consent{font-size:.76rem;color:var(--mut);margin-top:10px;text-align:center}
+.done{display:none;text-align:center;padding:6px 0}
+.done .tick{width:54px;height:54px;border-radius:50%;background:#e8f7ee;color:#128a43;display:grid;place-items:center;font-size:1.7rem;margin:0 auto 12px}
+.done h2{margin-bottom:6px}
+.done .btn{margin-top:12px}
+.trustline{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:14px;font-size:.78rem;color:var(--mut)}
+.trustline span::before{content:"✓ ";color:#128a43;font-weight:700}
+/* car CTA card + list band */
+.car.cta{background:var(--red);color:#fff;border-color:var(--red);justify-content:center;text-align:center;padding:26px 20px;gap:12px}
+.car.cta h3{font-size:1.45rem}
+.car.cta p{color:#f1d4d4;font-size:.95rem}
+.car.cta .btn{width:100%}
+.car.cta .btn-ghost{color:#fff;border-color:#d99}
+.alert{background:var(--red);color:#fff;padding:46px 0}
+.alert .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.alert h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:6px}
+.alert p{color:#f1d4d4}
+.alert form{display:grid;grid-template-columns:1fr auto;gap:10px}
+.alert input{border:0}
+.alert .btn{background:#000;color:#fff}.alert .btn:hover{background:#222}
+.alert .err{color:#ffd0d0}
+.reviews{display:grid;gap:16px;margin-top:22px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.alert .wrap{grid-template-columns:1fr}}
+@media(max-width:480px){.grid{gap:12px}.car .acts{grid-template-columns:1fr}.alert form{grid-template-columns:1fr}.opts button{padding:14px 8px}}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .js .rv.in{opacity:1;transform:none}
@@ -220,23 +259,28 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
       </div>
     </div>
     <form class="formcard" id="quick" novalidate>
-      <h2>Find your car in minutes</h2>
-      <p>Tell us what you want. A sales advisor replies the same day with matching cars and prices.</p>
-      <label for="q-name">Your name</label>
-      <input id="q-name" name="name" autocomplete="name" required>
-      <label for="q-phone">Phone / WhatsApp</label>
-      <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
-      <div class="err" id="q-err">Please enter your name and a valid phone number.</div>
-      <div class="row2">
-        <div><label for="q-type">I'm looking for</label>
-          <select id="q-type" name="type"><option>SUV</option><option>Sedan</option><option>Hatchback</option><option>Pickup</option><option>Not sure yet</option></select></div>
-        <div><label for="q-budget">Budget (KES)</label>
-          <select id="q-budget" name="budget"><option>Under 2M</option><option>2M – 4M</option><option>4M – 7M</option><option>7M – 15M</option><option>15M+</option></select></div>
+      <div class="fwrap">
+      <div class="prog"><i id="prog"></i></div>
+      <div class="slabel"><span id="slabel">Step 1 of 3</span><button type="button" id="back" hidden>← Back</button></div>
+      <div class="fs on" data-s="1"><h2>What are you looking for?</h2><p>Tap one. Takes 20 seconds.</p>
+        <div class="opts" data-name="type"><button type="button">SUV</button><button type="button">Sedan</button><button type="button">Hatchback</button><button type="button">Pickup</button><button type="button">Not sure yet</button></div></div>
+      <div class="fs" data-s="2"><h2>What's your budget?</h2><p>We'll only show cars you can afford.</p>
+        <div class="opts" data-name="budget"><button type="button">Under 2M</button><button type="button">2M – 4M</button><button type="button">4M – 7M</button><button type="button">7M – 15M</button><button type="button">15M+</button></div></div>
+      <div class="fs" data-s="3"><h2>Where should we send your matches?</h2><p>A sales advisor contacts you the same day with cars and prices.</p>
+        <label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required>
+        <label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
+        <label for="q-how">How will you pay?</label>
+        <select id="q-how" name="how"><option>Cash</option><option>Bank finance</option><option>Hire purchase</option><option>Trade-in + top up</option></select>
+        <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="err" id="q-err">Enter your name and a valid Kenyan phone number (e.g. 0712 345 678).</div>
+        <button class="btn btn-red" type="submit">Get my matching cars</button>
+        <p class="consent">By sending, you agree that Eleven Motors may contact you about cars. No spam.</p></div>
+      <div class="trustline"><span>Free, no obligation</span><span>Reply same day</span><span>2 Nairobi showrooms</span></div>
       </div>
-      <label for="q-how">How are you paying?</label>
-      <select id="q-how" name="how"><option>Cash</option><option>Bank finance</option><option>Hire purchase</option><option>Trade-in + top up</option></select>
-      <button class="btn btn-red" type="submit">Send me matching cars</button>
-      <p class="fine">We reply on WhatsApp. No spam, no obligation.</p>
+      <div class="done" id="q-done"><div class="tick">✓</div><h2 id="q-thanks">Thank you!</h2>
+        <p>Your request is in. An advisor will contact you shortly. For the fastest reply, send it on WhatsApp too.</p>
+        <a class="btn btn-wa" id="q-wa" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <a class="btn btn-ghost" style="color:#111;border-color:#bbb;margin-top:8px;width:100%" href="tel:+254116101111">Or call +254 116 101 111</a></div>
     </form>
   </div>
   <div class="scroll">Scroll</div>
@@ -315,6 +359,16 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   </div>
 </div></section>
 
+<!-- NEW ARRIVALS BAND -->
+<div class="alert"><div class="wrap">
+  <div><h2 class="rv">Get new arrivals before they're listed.</h2><p class="rv">Drop your number and we'll WhatsApp you cars that match, plus price drops.</p></div>
+  <form id="alert" novalidate class="rv"><input id="a-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" aria-label="Phone number">
+    <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit" id="a-btn">Notify me</button>
+    <div class="err" id="a-err" style="grid-column:1/-1">Enter a valid Kenyan phone number.</div>
+    <div class="err" id="a-ok" style="grid-column:1/-1;display:none;color:#fff">✓ Got it. We'll message you soon.</div></form>
+</div></div>
+
 <!-- STEPS -->
 <section class="alt"><div class="wrap">
   <span class="eyebrow rv">How it works</span>
@@ -351,11 +405,17 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <div>
     <span class="eyebrow rv">Happy buyers</span>
     <h2 class="rv">Trusted by buyers across Kenya.</h2>
-    <div class="quote rv" style="margin-top:22px">
+    <div class="reviews">
+    <div class="quote rv">
       <div class="stars" aria-label="5 stars">★★★★★</div>
       <p>“I had an awesome experience working with Carol, got a Prado J150. Despite handling everything virtually she delivered beyond my expectations. Highly recommended.”</p>
       <small>Edwin Odinga · Google review</small>
     </div>
+    <div class="quote rv">
+      <div class="stars" aria-label="5 stars">★★★★★</div>
+      <p>“Amazing customer care and totally efficient. I would recommend their services.”</p>
+      <small>Aisha F. · Google review</small>
+    </div></div>
   </div>
   <div class="who rv"><video muted loop playsinline preload="none" data-src="assets/video/hero.mp4" poster="assets/img/hero.jpg"></video></div>
 </div></section>
@@ -420,7 +480,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
       <select id="t-loc" name="loc"><option>Two Rivers (Limuru Road)</option><option>Kiambu Road (near Motorhub)</option></select>
       <label for="t-name">Your name</label><input id="t-name" name="name" autocomplete="name" required>
       <label for="t-phone">Phone / WhatsApp</label><input id="t-phone" name="phone" type="tel" autocomplete="tel" required>
-      <div class="err" id="t-err">Please fill in your name, phone and a date (not a Sunday).</div>
+      <div class="err" id="t-err">Enter your name, a valid Kenyan phone number and a date (not a Sunday).</div>
       <button class="btn btn-red" type="submit">Confirm my test drive</button>
       <p class="fine">Bring your driving licence. Slots are confirmed by our team.</p>
     </div>
@@ -443,6 +503,8 @@ const CARS = [
   {id:"rr-vogue",  make:"Land Rover",    name:"Range Rover Vogue 1st Edition",      type:"SUV",       img:"range-rover-rear.jpg",   price:32000000, meta:"2022 · 27,000 km · 3000 cc"},
   {id:"rr-sport",  make:"Land Rover",    name:"Range Rover Sport",                  type:"SUV",       img:"range-rover-sport.jpg",  price:null,     meta:"Black · Premium interior"},
   {id:"s-class",   make:"Mercedes-Benz", name:"Mercedes-Benz S-Class",              type:"Sedan",     img:"mercedes-s-class.jpg",   price:null,     meta:"Diamond-quilted leather · Ambient lighting"},
+  {id:"gle-coupe", make:"Mercedes-Benz", name:"Mercedes-Benz GLE Coupe",            type:"SUV",       img:"mercedes-gle.jpg",       price:null,     meta:"White · Panoramic roof"},
+  {id:"rav4",      make:"Toyota",        name:"Toyota RAV4",                        type:"SUV",       img:"toyota-rav4.jpg",        price:null,     meta:"Pearl white · Adventure trim available"},
   {id:"golf",      make:"Volkswagen",    name:"Volkswagen Golf",                    type:"Hatchback", img:"golf-front.jpg",         price:null,     meta:"White · Alloys · Inspected"}
 ];
 /* ==================== */
@@ -451,10 +513,27 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const kes=n=>"KES "+n.toLocaleString("en-KE");
 const waLink=t=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`;
 function track(ev,d){ try{ (window.dataLayer=window.dataLayer||[]).push({event:ev,...d}) }catch(e){} }
-function send(payload){
-  if(!CONFIG.leadEndpoint) return;
-  fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)}).catch(()=>{});
+/* ---- lead delivery ----
+   1) POST to CONFIG.leadEndpoint (Google Sheet / Formspree / Web3Forms, see LEADS_SETUP.md)
+   2) always keep a local copy and retry failed sends on the next visit
+   3) the customer also sends a pre-filled WhatsApp message to the dealership */
+const LQ="el_lead_queue";
+const qGet=()=>{try{return JSON.parse(localStorage.getItem(LQ)||"[]")}catch(e){return[]}};
+const qSet=v=>{try{localStorage.setItem(LQ,JSON.stringify(v))}catch(e){}};
+function post(p){
+  if(!CONFIG.leadEndpoint) return Promise.reject(new Error("no endpoint"));
+  return fetch(CONFIG.leadEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(p).toString()});
 }
+function utm(){const q=new URLSearchParams(location.search),o={};["utm_source","utm_medium","utm_campaign","utm_term","gclid","fbclid"].forEach(k=>{if(q.get(k))o[k]=q.get(k)});return o}
+function normPhone(v){let d=String(v).replace(/\D/g,"");if(d.startsWith("254"))d=d.slice(3);else if(d.startsWith("0"))d=d.slice(1);return /^[17]\d{8}$/.test(d)?"+254"+d:null}
+function submitLead(p){
+  if(p.company) return;                         // honeypot: bots fill this
+  const lead={...p,...utm(),page:location.href.split("?")[0],referrer:document.referrer||"direct",submitted_at:new Date().toISOString()};
+  delete lead.company;
+  track("lead",{form:lead.source});
+  post(lead).catch(()=>{const q=qGet();q.push(lead);qSet(q.slice(-20))});
+}
+(function retry(){const q=qGet();if(!q.length||!CONFIG.leadEndpoint)return;qSet([]);q.forEach(l=>post(l).catch(()=>{const n=qGet();n.push(l);qSet(n)}))})();
 
 /* WhatsApp links */
 $$("[data-wa]").forEach(a=>{a.href=waLink(a.dataset.wa);a.target="_blank";a.rel="noopener";a.addEventListener("click",()=>track("whatsapp_click",{}))});
@@ -471,23 +550,39 @@ function render(){
     <div class="in"><h3>${c.name}</h3><div class="meta">${c.meta}</div>
     <div class="price">${c.price?kes(c.price):"Price on request"}</div>
     <div class="acts"><button class="btn btn-red" data-td="${c.id}">Test drive</button>
-    <a class="btn btn-wa" data-wa2="${c.name}${c.price?" ("+kes(c.price)+")":""}">Ask price</a></div></div></article>`).join("");
-  $("#empty").style.display=list.length?"none":"block";
+    <a class="btn btn-wa" data-wa2="${c.name}${c.price?" ("+kes(c.price)+")":""}">Ask price</a></div></div></article>`).join("")+
+   `<article class="car cta"><h3>Not seeing your car?</h3><p>We have 50+ in stock and import to order. Tell us what you want.</p>
+    <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car that's not on your page. Can you help me find one?">Ask us to find it</a>
+    <button class="btn btn-ghost" data-td>Book a test drive</button></article>`;
+  $("#empty").style.display="none";
   $$("[data-wa2]").forEach(a=>{a.href=waLink(`Hi Eleven Motors, I'm interested in the ${a.dataset.wa2}. Is it still available and what is the best price?`);a.target="_blank";a.rel="noopener"});
 }
 $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;$$(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");curType=b.dataset.type;render();track("filter",{type:curType})});
 $("#make").addEventListener("change",render);
 render();
 
-/* Quick lead form -> WhatsApp (+ optional endpoint) */
-$("#quick").addEventListener("submit",e=>{
+/* Quick lead form: 3 taps, contact last */
+const qf=$("#quick"),steps=$$(".fs"),ans={};let st=1;
+function go(n){st=n;steps.forEach(s=>s.classList.toggle("on",+s.dataset.s===n));$("#prog").style.width=(n*33.4)+"%";$("#slabel").textContent=`Step ${n} of 3`;$("#back").hidden=n===1;track("form_step",{step:n})}
+$$(".opts").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;[...g.children].forEach(x=>x.classList.remove("sel"));b.classList.add("sel");ans[g.dataset.name]=b.textContent;setTimeout(()=>go(st+1),180)}));
+$("#back").onclick=()=>go(Math.max(1,st-1));
+qf.addEventListener("submit",e=>{
   e.preventDefault();
-  const f=Object.fromEntries(new FormData(e.target)), ok=f.name.trim().length>1&&f.phone.replace(/\D/g,"").length>=9;
+  const f=Object.fromEntries(new FormData(qf)),ph=normPhone(f.phone),ok=f.name.trim().length>1&&ph;
   $("#q-err").style.display=ok?"none":"block"; if(!ok)return;
-  send({source:"quick-form",...f}); track("lead",{form:"quick"});
-  const msg=`Hi Eleven Motors, I'm ${f.name}. I'm looking for a ${f.type}, budget ${f.budget}, paying by ${f.how}. Please send matching cars. My number: ${f.phone}`;
+  const d={source:"hero-form",name:f.name.trim(),phone:ph,type:ans.type||"",budget:ans.budget||"",payment:f.how,company:f.company};
+  submitLead(d);
+  const msg=`Hi Eleven Motors, I'm ${d.name}. I'm looking for a ${d.type}, budget ${d.budget}, paying by ${d.payment}. Please send matching cars. My number: ${ph}`;
+  $("#q-wa").href=waLink(msg); $("#q-thanks").textContent=`Thank you, ${d.name.split(" ")[0]}!`;
+  qf.querySelector(".fwrap").style.display="none"; $("#q-done").style.display="block";
   window.open(waLink(msg),"_blank");
-  e.target.reset();
+});
+/* New-arrivals band: phone only */
+$("#alert").addEventListener("submit",e=>{
+  e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),ph=normPhone(f.phone);
+  $("#a-err").style.display=ph?"none":"block"; if(!ph)return;
+  submitLead({source:"new-arrivals",phone:ph,company:f.company});
+  $("#a-ok").style.display="block";$("#a-btn").disabled=true;
 });
 
 /* Test drive modal */
@@ -505,11 +600,11 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remo
 $("#td").addEventListener("submit",e=>{
   e.preventDefault();
   const f=Object.fromEntries(new FormData(e.target)), day=f.date?new Date(f.date).getDay():-1;
-  const ok=f.name.trim().length>1&&f.phone.replace(/\D/g,"").length>=9&&f.date&&day!==0;
+  const ph=normPhone(f.phone),ok=f.name.trim().length>1&&ph&&f.date&&day!==0;
   $("#t-err").style.display=ok?"none":"block"; if(!ok)return;
   const car=$("#t-car").selectedOptions[0].textContent;
-  const msg=`Hi Eleven Motors, I'd like to book a test drive.\nCar: ${car}\nDate: ${f.date} at ${f.time}\nShowroom: ${f.loc}\nName: ${f.name}\nPhone: ${f.phone}`;
-  send({source:"test-drive",...f,car}); track("lead",{form:"test_drive",car});
+  const msg=`Hi Eleven Motors, I'd like to book a test drive.\nCar: ${car}\nDate: ${f.date} at ${f.time}\nShowroom: ${f.loc}\nName: ${f.name}\nPhone: ${ph}`;
+  submitLead({source:"test-drive",name:f.name.trim(),phone:ph,car,date:f.date,time:f.time,showroom:f.loc});
   $("#td-wa").href=waLink(msg); $("#td-body").style.display="none"; $("#td-ok").style.display="block";
   window.open(waLink(msg),"_blank");
 });
