@@ -236,6 +236,12 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 .inline-cta div{display:flex;gap:10px;flex-wrap:wrap}
 #av-body .btn,#av-done .btn{width:100%;margin-top:14px}
 body:has(.modal.open) .wa-float{display:none}
+.carchip{background:#fbf3f3;border:1px solid #ecd0d0;color:var(--red);font:500 .84rem var(--sans);padding:8px 12px;border-radius:var(--r);margin-bottom:12px}
+#quick{scroll-margin-top:100px}
+#quick.flash{animation:fl 1.4s}
+@keyframes fl{0%,60%{box-shadow:0 0 0 4px rgba(232,180,180,.9),0 30px 80px rgba(0,0,0,.55)}100%{box-shadow:0 30px 80px rgba(0,0,0,.55)}}
+input.bad{border-color:#b00020;background:#fff6f6}
+.formcard .btn[disabled]{opacity:.7;cursor:wait}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .js .rv.in{opacity:1;transform:none}
@@ -290,27 +296,32 @@ body:has(.modal.open) .wa-float{display:none}
     </div>
     <form class="formcard" id="quick" novalidate>
       <div class="fwrap">
+      <div class="carchip" id="qcar" hidden></div>
       <div class="prog"><i id="prog"></i></div>
       <div class="slabel"><span id="slabel">Step 1 of 3</span><button type="button" id="back" hidden>← Back</button></div>
       <div class="fs on" data-s="1"><h2>What are you looking for?</h2><p>Tap one. Takes 20 seconds.</p>
         <div class="opts" data-name="type"><button type="button">SUV</button><button type="button">Sedan</button><button type="button">Hatchback</button><button type="button">Pickup</button><button type="button">Not sure yet</button></div></div>
       <div class="fs" data-s="2"><h2>What's your budget?</h2><p>We'll only show cars you can afford.</p>
         <div class="opts" data-name="budget"><button type="button">Under 2M</button><button type="button">2M – 4M</button><button type="button">4M – 7M</button><button type="button">7M – 15M</button><button type="button">15M+</button></div></div>
-      <div class="fs" data-s="3"><h2>Where should we send your matches?</h2><p>A sales advisor contacts you the same day with matching cars.</p>
+      <div class="fs" data-s="3"><h2>Almost done. Where do we reach you?</h2><p>We'll open the live cars for you, and an advisor can confirm your car on WhatsApp.</p>
         <label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required>
         <label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
-        <label for="q-how">How will you pay?</label>
-        <select id="q-how" name="how"><option>Cash</option><option>Bank finance</option><option>Hire purchase</option><option>Trade-in + top up</option></select>
+        <div class="row2"><div><label for="q-how">How will you pay?</label>
+        <select id="q-how" name="how"><option>Cash</option><option>Bank finance</option><option>Hire purchase</option><option>Trade-in + top up</option></select></div>
+        <div><label for="q-when">When do you want to buy?</label>
+        <select id="q-when" name="when"><option>This week</option><option>This month</option><option>In 1 to 3 months</option><option>Just browsing</option></select></div></div>
         <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="err" id="q-err">Enter your name and a valid Kenyan phone number (e.g. 0712 345 678).</div>
-        <button class="btn btn-red" type="submit">Get my matching cars</button>
+        <button class="btn btn-red" type="submit">Show me available cars</button>
         <p class="consent">By sending, you agree that Eleven Motors may contact you about cars. No spam.</p></div>
       <div class="trustline"><span>Free, no obligation</span><span>Reply same day</span><span>2 Nairobi showrooms</span></div>
       </div>
       <div class="done" id="q-done"><div class="tick">✓</div><h2 id="q-thanks">Thank you!</h2>
-        <p>Your request is in. An advisor will contact you shortly. For the fastest reply, send it on WhatsApp too.</p>
-        <a class="btn btn-wa" id="q-wa" target="_blank" rel="noopener">Send on WhatsApp</a>
-        <a class="btn btn-ghost" style="color:#111;border-color:#bbb;margin-top:8px;width:100%" href="tel:+254116101111">Or call +254 116 101 111</a></div>
+        <p>Your live cars should have opened in a new tab. If not, tap below. An advisor will follow up with you.</p>
+        <a class="btn btn-red" id="q-go" target="_blank" rel="noopener">See live available cars →</a>
+        <a class="btn btn-wa" id="q-wa" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+        <a class="btn btn-ghost" style="color:#111;border-color:#bbb;margin-top:8px;width:100%" href="tel:+254116101111">Or call +254 116 101 111</a>
+        <button type="button" class="tdlink" id="q-again" style="margin-top:12px">Check another car</button></div>
     </form>
   </div>
   <div class="scroll">Scroll</div>
@@ -490,29 +501,7 @@ body:has(.modal.open) .wa-float{display:none}
 </div></footer>
 
 
-<div class="modal" id="amodal" role="dialog" aria-modal="true" aria-labelledby="av-title">
-  <form class="formcard" id="avail" novalidate>
-    <button class="x" type="button" id="aclose" aria-label="Close">×</button>
-    <div id="av-body">
-      <h2 id="av-title">Check availability</h2>
-      <p>Tell us who you are and we'll open the live cars for you. A sales advisor can also confirm your car on WhatsApp.</p>
-      <label for="av-car">Car you're interested in</label>
-      <select id="av-car" name="car"></select>
-      <label for="av-name">Your name</label><input id="av-name" name="name" autocomplete="name" required>
-      <label for="av-phone">Phone / WhatsApp</label><input id="av-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
-      <label for="av-when">When do you want to buy?</label>
-      <select id="av-when" name="when"><option>This week</option><option>This month</option><option>In 1 to 3 months</option><option>Just browsing</option></select>
-      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="err" id="av-err">Enter your name and a valid Kenyan phone number (e.g. 0712 345 678).</div>
-      <button class="btn btn-red" type="submit">Show me available cars</button>
-      <p class="consent">By continuing, you agree that Eleven Motors may contact you about cars. No spam.</p>
-    </div>
-    <div class="done" id="av-done"><div class="tick">✓</div><h2 id="av-thanks">Thank you!</h2>
-      <p>Your live cars should have opened in a new tab. If not, tap below. An advisor will follow up with you.</p>
-      <a class="btn btn-red" id="av-go" target="_blank" rel="noopener">See live available cars →</a>
-      <a class="btn btn-wa" id="av-wa" target="_blank" rel="noopener">Confirm on WhatsApp</a></div>
-  </form>
-</div>
+
 
 <div class="bar">
   <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm interested in a car.">WhatsApp</a>
@@ -624,22 +613,41 @@ $("#make").addEventListener("change",render);
 $$(".btn-wa:not(#grid .btn-wa),.wa-float").forEach(a=>{addIcon(a);a.addEventListener("click",()=>track("whatsapp_click",{}))});
 render();
 
-/* Quick lead form: 3 taps, contact last */
-const qf=$("#quick"),steps=$$(".fs"),ans={};let st=1;
-function go(n){st=n;steps.forEach(s=>s.classList.toggle("on",+s.dataset.s===n));$("#prog").style.width=(n*33.4)+"%";$("#slabel").textContent=`Step ${n} of 3`;$("#back").hidden=n===1;track("form_step",{step:n})}
-$$(".opts").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;[...g.children].forEach(x=>x.classList.remove("sel"));b.classList.add("sel");ans[g.dataset.name]=b.textContent;setTimeout(()=>go(st+1),180)}));
+/* Quick lead form: 3 taps, contact last. Every "Check availability" button leads here. */
+const qf=$("#quick"),steps=$$(".fs"),ans={};let st=1,pickedCar="";
+function go(n){st=n;steps.forEach(s=>s.classList.toggle("on",+s.dataset.s===n));$("#prog").style.width=(n*33.4)+"%";$("#slabel").textContent=`Step ${n} of 3`;$("#back").hidden=n===1;track("form_step",{step:n});if(n===3)setTimeout(()=>{if(!matchMedia("(pointer:coarse)").matches)$("#q-name").focus()},320)}
+function setOpt(name,text){const g=$(`.opts[data-name=${name}]`);[...g.children].forEach(x=>x.classList.toggle("sel",x.textContent===text));ans[name]=text}
+$$(".opts").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setOpt(g.dataset.name,b.textContent);setTimeout(()=>go(st+1),180)}));
 $("#back").onclick=()=>go(Math.max(1,st-1));
+function resetForm(){qf.querySelector(".fwrap").style.display="";$("#q-done").style.display="none";$$(".opts button").forEach(x=>x.classList.remove("sel"));delete ans.type;delete ans.budget;go(1)}
+$("#q-again").onclick=()=>{resetForm();gotoForm("any")};
+function gotoForm(id){
+  const car=CARS.find(c=>c.id===id);
+  if($("#q-done").style.display==="block")resetForm();
+  pickedCar=car?car.name:"";
+  const chip=$("#qcar");chip.hidden=!car;if(car)chip.textContent="Checking availability: "+car.name;
+  qf.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+  qf.classList.remove("flash");void qf.offsetWidth;qf.classList.add("flash");
+  if(car&&st===1){const t=[...$$(".opts[data-name=type] button")].find(b=>b.textContent===car.type);if(t){setOpt("type",car.type);setTimeout(()=>go(2),500)}}
+  track("check_availability",{car:id});
+}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-avail]");if(!a)return;e.preventDefault();gotoForm(a.dataset.avail)});
 qf.addEventListener("submit",e=>{
   e.preventDefault();
-  const f=Object.fromEntries(new FormData(qf)),ph=normPhone(f.phone),ok=f.name.trim().length>1&&ph;
-  $("#q-err").style.display=ok?"none":"block"; if(!ok)return;
-  const d={source:"hero-form",name:f.name.trim(),phone:ph,type:ans.type||"",budget:ans.budget||"",payment:f.how,company:f.company};
+  const f=Object.fromEntries(new FormData(qf)),ph=normPhone(f.phone),nameOk=f.name.trim().length>1;
+  $("#q-name").classList.toggle("bad",!nameOk);$("#q-phone").classList.toggle("bad",!ph);
+  $("#q-err").style.display=nameOk&&ph?"none":"block"; if(!(nameOk&&ph))return;
+  const btn=qf.querySelector('button[type=submit]');btn.disabled=true;
+  const d={source:"hero-form",name:f.name.trim(),phone:ph,type:ans.type||"",budget:ans.budget||"",payment:f.how,timeline:f.when,car:pickedCar,company:f.company};
   submitLead(d);
-  const msg=`Hi Eleven Motors, I'm ${d.name}. I'm looking for a ${d.type}, budget ${d.budget}, paying by ${d.payment}. Please send matching cars. My number: ${ph}`;
-  $("#q-wa").href=waLink(msg); $("#q-thanks").textContent=`Thank you, ${d.name.split(" ")[0]}!`;
-  qf.querySelector(".fwrap").style.display="none"; $("#q-done").style.display="block";
-  window.open(waLink(msg),"_blank");
+  const msg=`Hi Eleven Motors, I'm ${d.name}. Is ${pickedCar?"the "+pickedCar:"a "+(d.type||"car")} available? Budget ${d.budget||"flexible"}, paying by ${d.payment}, planning to buy: ${d.timeline}. My number: ${ph}`;
+  $("#q-go").href=CONFIG.vehicles;$("#q-wa").href=waLink(msg);$("#q-thanks").textContent=`Thank you, ${d.name.split(" ")[0]}!`;
+  qf.querySelector(".fwrap").style.display="none";$("#q-done").style.display="block";btn.disabled=false;qf.reset();
+  window.open(CONFIG.vehicles,"_blank");
 });
+["#q-name","#q-phone"].forEach(s=>$(s).addEventListener("input",e=>e.target.classList.remove("bad")));
+/* hide the floating WhatsApp button while the form is on screen so they never overlap */
+new IntersectionObserver(([en])=>{const f=$(".wa-float");if(f)f.style.visibility=en.isIntersecting?"hidden":""},{threshold:.15}).observe(qf);
 /* New-arrivals band: phone only */
 $("#alert").addEventListener("submit",e=>{
   e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),ph=normPhone(f.phone);
@@ -672,44 +680,6 @@ $("#td").addEventListener("submit",e=>{
   window.open(waLink(msg),"_blank");
 });
 
-
-/* ---- Check availability: lead form first, then the live vehicles page ---- */
-const am=$("#amodal"),LD="el_lead_done";
-const flagDone=()=>{try{sessionStorage.setItem(LD,"1")}catch(e){}};
-const isDone=()=>{try{return sessionStorage.getItem(LD)==="1"}catch(e){return false}};
-$("#av-car").innerHTML='<option value="any">Any car / not sure yet</option>'+CARS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
-function openAvail(id,from){
-  $("#av-body").style.display="";$("#av-done").style.display="none";$("#av-err").style.display="none";
-  $("#av-car").value=[...$("#av-car").options].some(o=>o.value===id)?id:"any";
-  am.dataset.from=from||"button";am.classList.add("open");track("open_availability",{car:id,from:from||"button"});
-  setTimeout(()=>$("#av-name").focus(),50);
-}
-document.addEventListener("click",e=>{const a=e.target.closest("[data-avail]");if(!a)return;e.preventDefault();openAvail(a.dataset.avail,"click")});
-$("#aclose").onclick=()=>am.classList.remove("open");
-am.addEventListener("click",e=>{if(e.target===am)am.classList.remove("open")});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")am.classList.remove("open")});
-$("#avail").addEventListener("submit",e=>{
-  e.preventDefault();
-  const f=Object.fromEntries(new FormData(e.target)),ph=normPhone(f.phone),ok=f.name.trim().length>1&&ph;
-  $("#av-err").style.display=ok?"none":"block"; if(!ok)return;
-  const car=$("#av-car").selectedOptions[0].textContent;
-  submitLead({source:"check-availability",name:f.name.trim(),phone:ph,car,timeline:f.when,trigger:am.dataset.from,company:f.company});
-  flagDone();
-  const msg=`Hi Eleven Motors, I'm ${f.name.trim()}. Is the ${f.car==="any"?"car I'm looking for":car} available? I plan to buy: ${f.when}. My number: ${ph}`;
-  $("#av-go").href=CONFIG.vehicles;$("#av-wa").href=waLink(msg);$("#av-thanks").textContent=`Thank you, ${f.name.trim().split(" ")[0]}!`;
-  $("#av-body").style.display="none";$("#av-done").style.display="block";
-  window.open(CONFIG.vehicles,"_blank");
-});
-/* mark lead as done after any other form too */
-["#quick","#alert","#td"].forEach(s=>$(s).addEventListener("submit",()=>setTimeout(flagDone,50)));
-/* exit-intent (desktop) or 40s on page (once per visit, never after a lead) */
-let shownExit=false;
-function maybeExit(from){
-  if(shownExit||isDone()||document.querySelector(".modal.open"))return;
-  shownExit=true;openAvail("any",from);
-}
-document.addEventListener("mouseout",e=>{if(e.clientY<=0&&!e.relatedTarget&&innerWidth>900&&performance.now()>8000)maybeExit("exit-intent")});
-setTimeout(()=>maybeExit("timer"),40000);
 
 /* progressive enhancement: reveal, counters, marquee, lazy video */
 document.documentElement.classList.add("js");

@@ -1,6 +1,6 @@
 # How leads reach you
 
-Every form on the page (hero form, Check availability, test-drive booking, new-arrivals band) does **three** things:
+Every form on the page (the 3-step hero form that every Check availability button leads to, test-drive booking, new-arrivals band) does **three** things:
 
 1. **Sends the lead to your inbox / Google Sheet** (needs the one-time setup below).
 2. **Opens WhatsApp** with the customer's details pre-filled, addressed to `+254 116 101 111`.
