@@ -97,7 +97,6 @@ input:focus,select:focus{outline:2px solid var(--red);border-color:transparent}
 .car .badge{position:absolute;left:12px;top:12px;background:#000;color:#fff;font:500 .66rem var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:5px 9px}
 .car .in{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .meta{color:var(--mut);font-size:.88rem}
-.price{font:500 1.1rem var(--sans);margin-top:4px}
 .car .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:14px}
 .car .btn{padding:12px 8px;font-size:.85rem}
 .empty{display:none;padding:30px;border:1px dashed #bdbab4;border-radius:var(--r);text-align:center;color:var(--mut)}
@@ -209,6 +208,24 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.alert .wrap{grid-template-columns:1fr}}
 @media(max-width:480px){.grid{gap:12px}.car .acts{grid-template-columns:1fr}.alert form{grid-template-columns:1fr}.opts button{padding:14px 8px}}
+
+/* whatsapp emphasis + availability */
+.hero .cta-row{gap:10px}.hero .cta-row .btn-lg{padding:16px 22px}.hero .cta-row .btn-ghost{padding:16px 20px}
+.wi{width:1.25em;height:1.25em;flex:none}
+.btn-wa{font-weight:700;box-shadow:0 6px 18px rgba(37,211,102,.28)}
+.pulse{animation:wpulse 2.2s infinite}
+@keyframes wpulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:45;display:flex;align-items:center;gap:10px;padding:14px 20px 14px 16px;border-radius:99px;background:var(--ok);color:#06220f;font:700 .95rem var(--sans);text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);animation:wpulse 2.2s infinite;cursor:pointer}
+.wa-float:hover{filter:brightness(1.06)}
+.tdlink{background:none;border:0;color:var(--red);font:500 .85rem var(--sans);text-align:left;cursor:pointer;padding:10px 0 0;letter-spacing:.02em}
+.tdlink:hover{text-decoration:underline}
+.top .hwa{padding:11px 16px}
+.car .meta{min-height:1.4em}
+.car .acts{grid-template-columns:1fr 1fr}
+.car .acts .btn{padding:12px 6px;font-size:.82rem;white-space:nowrap}
+@media(max-width:900px){.wa-float{display:none}.top .hbook{display:none}.bar{grid-template-columns:1.3fr 1.2fr 1fr}.bar .btn-wa{font-size:.92rem}}
+@media(max-width:480px){.car .acts{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pulse,.wa-float{animation:none}}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .js .rv.in{opacity:1;transform:none}
@@ -235,7 +252,8 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <a class="logo" href="#top" aria-label="Eleven Motors home"><img src="assets/img/logo.png" alt="Eleven Motors" width="216" height="40"></a>
   <nav>
     <a class="l" href="#cars">Cars</a><a class="l" href="#import">Import</a><a class="l" href="#faq">FAQ</a>
-    <button class="btn btn-red" data-td>Book test drive</button>
+    <a class="btn btn-wa hwa" data-wa="Hi Eleven Motors, I'd like to know what cars you have available.">WhatsApp</a>
+    <button class="btn btn-red hbook" data-td>Book test drive</button>
   </nav>
 </div></header>
 
@@ -254,8 +272,9 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
         <li>Bank finance and hire purchase options available</li>
       </ul>
       <div class="cta-row">
-        <button class="btn btn-red btn-lg" data-td>Book a test drive</button>
-        <a class="btn btn-wa btn-lg" data-wa="Hi Eleven Motors, I'd like to know what cars you have available.">WhatsApp us now</a>
+        <a class="btn btn-wa btn-lg pulse" data-wa="Hi Eleven Motors, I'd like to know what cars you have available.">Chat on WhatsApp</a>
+        <a class="btn btn-red btn-lg" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=hero" target="_blank" rel="noopener">Check availability</a>
+        <button class="btn btn-ghost" data-td>Book test drive</button>
       </div>
     </div>
     <form class="formcard" id="quick" novalidate>
@@ -266,7 +285,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
         <div class="opts" data-name="type"><button type="button">SUV</button><button type="button">Sedan</button><button type="button">Hatchback</button><button type="button">Pickup</button><button type="button">Not sure yet</button></div></div>
       <div class="fs" data-s="2"><h2>What's your budget?</h2><p>We'll only show cars you can afford.</p>
         <div class="opts" data-name="budget"><button type="button">Under 2M</button><button type="button">2M – 4M</button><button type="button">4M – 7M</button><button type="button">7M – 15M</button><button type="button">15M+</button></div></div>
-      <div class="fs" data-s="3"><h2>Where should we send your matches?</h2><p>A sales advisor contacts you the same day with cars and prices.</p>
+      <div class="fs" data-s="3"><h2>Where should we send your matches?</h2><p>A sales advisor contacts you the same day with matching cars.</p>
         <label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required>
         <label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
         <label for="q-how">How will you pay?</label>
@@ -310,9 +329,9 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 
 <!-- FLEET -->
 <section id="cars" class="alt"><div class="wrap">
-  <span class="eyebrow rv">Featured stock</span>
-  <h2 class="rv">Find your car</h2>
-  <p class="sub rv">Filter by body type or make. See one you like? Book a test drive in 30 seconds.</p>
+  <span class="eyebrow rv">Popular models</span>
+  <h2 class="rv">See what's on the floor today</h2>
+  <p class="sub rv">Our stock changes daily. Pick a model and tap <b>Check availability</b> to see live cars on our website, or ask us on WhatsApp.</p>
   <div class="filters rv" id="filters">
     <button class="chip on" data-type="all">All</button>
     <button class="chip" data-type="SUV">SUV</button>
@@ -323,7 +342,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">No match right now. We can find it for you.
     <div style="margin-top:14px"><a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car that's not on your page. Can you help me find one?">Ask us to source it</a></div></div>
-  <div class="more"><a class="btn btn-ghost" href="https://elevenmotorske.com/vehicles">See the full stock on elevenmotorske.com →</a></div>
+  <div class="more"><a class="btn btn-red btn-lg" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=see_all" target="_blank" rel="noopener">Check availability of all vehicles →</a></div>
 </div></section>
 
 <!-- REELS -->
@@ -361,7 +380,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 
 <!-- NEW ARRIVALS BAND -->
 <div class="alert"><div class="wrap">
-  <div><h2 class="rv">Get new arrivals before they're listed.</h2><p class="rv">Drop your number and we'll WhatsApp you cars that match, plus price drops.</p></div>
+  <div><h2 class="rv">Get new arrivals before they're listed.</h2><p class="rv">Drop your number and we'll WhatsApp you cars that match what you want.</p></div>
   <form id="alert" novalidate class="rv"><input id="a-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" aria-label="Phone number">
     <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="btn" type="submit" id="a-btn">Notify me</button>
@@ -458,10 +477,12 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 </div></footer>
 
 <div class="bar">
-  <a class="btn btn-ghost" href="tel:+254116101111">Call</a>
   <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm interested in a car.">WhatsApp</a>
-  <button class="btn btn-red" data-td>Book test drive</button>
+  <a class="btn btn-red" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=mobile_bar" target="_blank" rel="noopener">Check availability</a>
+  <button class="btn btn-ghost" data-td>Test drive</button>
 </div>
+
+<a class="wa-float" data-wa="Hi Eleven Motors, I'm interested in a car." aria-label="Chat on WhatsApp"><span>Chat on WhatsApp</span></a>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="td-title">
   <form class="formcard" id="td" novalidate>
@@ -495,22 +516,22 @@ const CONFIG = {
   whatsapp: "254116101111",          // digits only, country code first
   // Optional: paste a Formspree / Make / Zapier webhook URL to also store every lead.
   leadEndpoint: "",
-  site: "https://elevenmotorske.com/vehicles"
+  vehicles: "https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=check_availability"
 };
-// Stock shown on the page. price: null shows "Price on request".
+// Popular models shown as examples. No prices or availability here on purpose:
+// those change daily, so every "Check availability" button opens the live vehicles page.
 const CARS = [
-  {id:"lc300-gr",  make:"Toyota",        name:"Toyota Land Cruiser LC300 GR Sport", type:"SUV",       img:"land-cruiser-gr.jpg",    price:null,     meta:"Automatic · JBL audio · 4WD"},
-  {id:"rr-vogue",  make:"Land Rover",    name:"Range Rover Vogue 1st Edition",      type:"SUV",       img:"range-rover-rear.jpg",   price:32000000, meta:"2022 · 27,000 km · 3000 cc"},
-  {id:"rr-sport",  make:"Land Rover",    name:"Range Rover Sport",                  type:"SUV",       img:"range-rover-sport.jpg",  price:null,     meta:"Black · Premium interior"},
-  {id:"s-class",   make:"Mercedes-Benz", name:"Mercedes-Benz S-Class",              type:"Sedan",     img:"mercedes-s-class.jpg",   price:null,     meta:"Diamond-quilted leather · Ambient lighting"},
-  {id:"gle-coupe", make:"Mercedes-Benz", name:"Mercedes-Benz GLE Coupe",            type:"SUV",       img:"mercedes-gle.jpg",       price:null,     meta:"White · Panoramic roof"},
-  {id:"rav4",      make:"Toyota",        name:"Toyota RAV4",                        type:"SUV",       img:"toyota-rav4.jpg",        price:null,     meta:"Pearl white · Adventure trim available"},
-  {id:"golf",      make:"Volkswagen",    name:"Volkswagen Golf",                    type:"Hatchback", img:"golf-front.jpg",         price:null,     meta:"White · Alloys · Inspected"}
+  {id:"lc300-gr",  make:"Toyota",        name:"Toyota Land Cruiser LC300 GR Sport", type:"SUV",       img:"land-cruiser-gr.jpg",   blurb:"Flagship 4WD with GR Sport styling"},
+  {id:"rr-vogue",  make:"Land Rover",    name:"Range Rover Vogue",                  type:"SUV",       img:"range-rover-rear.jpg",  blurb:"The reference luxury SUV"},
+  {id:"rr-sport",  make:"Land Rover",    name:"Range Rover Sport",                  type:"SUV",       img:"range-rover-sport.jpg", blurb:"Performance and presence"},
+  {id:"s-class",   make:"Mercedes-Benz", name:"Mercedes-Benz S-Class",              type:"Sedan",     img:"mercedes-s-class.jpg",  blurb:"Executive luxury sedan"},
+  {id:"gle-coupe", make:"Mercedes-Benz", name:"Mercedes-Benz GLE Coupe",            type:"SUV",       img:"mercedes-gle.jpg",      blurb:"Coupe styling, SUV space"},
+  {id:"rav4",      make:"Toyota",        name:"Toyota RAV4",                        type:"SUV",       img:"toyota-rav4.jpg",       blurb:"Easy family SUV"},
+  {id:"golf",      make:"Volkswagen",    name:"Volkswagen Golf",                    type:"Hatchback", img:"golf-front.jpg",        blurb:"Compact and refined"}
 ];
 /* ==================== */
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const kes=n=>"KES "+n.toLocaleString("en-KE");
 const waLink=t=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`;
 function track(ev,d){ try{ (window.dataLayer=window.dataLayer||[]).push({event:ev,...d}) }catch(e){} }
 /* ---- lead delivery ----
@@ -542,23 +563,28 @@ $$("[data-wa]").forEach(a=>{a.href=waLink(a.dataset.wa);a.target="_blank";a.rel=
 let curType="all";
 const makes=[...new Set(CARS.map(c=>c.make))].sort();
 makes.forEach(m=>$("#make").insertAdjacentHTML("beforeend",`<option>${m}</option>`));
+const WA_ICON='<svg class="wi" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.4.7 4.6 1.8 6.5L3 29l6.7-1.8A13 13 0 0016 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.600c-2 0-3.900-.6-5.600-1.600l-.4-.2-4 1.100 1.100-3.900-.3-.4A10.600 10.600 0 1116 26.600zm5.800-7.900c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100a8.700 8.700 0 01-4.300-3.800c-.3-.6.300-.5.900-1.700.1-.2.100-.4 0-.5l-1-2.300c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400s-1.200 1.200-1.200 2.800 1.200 3.300 1.400 3.500 2.300 3.600 5.600 5c2.100.9 2.900 1 3.900.8.600-.1 1.900-.8 2.200-1.600.3-.8.300-1.400.2-1.600l-.5-.3z"/></svg>';
 function render(){
   const mk=$("#make").value;
   const list=CARS.filter(c=>(curType==="all"||c.type===curType)&&(mk==="all"||c.make===mk));
   $("#grid").innerHTML=list.map(c=>`
-   <article class="car"><div class="ph"><img loading="lazy" src="assets/img/${c.img}" alt="${c.name} for sale in Nairobi"><span class="badge">Available</span></div>
-    <div class="in"><h3>${c.name}</h3><div class="meta">${c.meta}</div>
-    <div class="price">${c.price?kes(c.price):"Price on request"}</div>
-    <div class="acts"><button class="btn btn-red" data-td="${c.id}">Test drive</button>
-    <a class="btn btn-wa" data-wa2="${c.name}${c.price?" ("+kes(c.price)+")":""}">Ask price</a></div></div></article>`).join("")+
-   `<article class="car cta"><h3>Not seeing your car?</h3><p>We have 50+ in stock and import to order. Tell us what you want.</p>
-    <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car that's not on your page. Can you help me find one?">Ask us to find it</a>
-    <button class="btn btn-ghost" data-td>Book a test drive</button></article>`;
+   <article class="car"><div class="ph"><img loading="lazy" src="assets/img/${c.img}" alt="${c.name} for sale in Nairobi"><span class="badge">${c.type}</span></div>
+    <div class="in"><h3>${c.name}</h3><div class="meta">${c.blurb}</div>
+    <div class="acts"><a class="btn btn-red" href="${CONFIG.vehicles}" target="_blank" rel="noopener" data-avail="${c.id}">Check availability</a>
+    <a class="btn btn-wa" data-wa2="${c.name}">WhatsApp</a></div>
+    <button class="tdlink" data-td="${c.id}">Book a test drive →</button></div></article>`).join("")+
+   `<article class="car cta"><h3>Not seeing your car?</h3><p>See every car on the floor right now, or tell us what you want and we'll find it.</p>
+    <a class="btn btn-red" style="background:#000" href="${CONFIG.vehicles}" target="_blank" rel="noopener" data-avail="all">See all vehicles</a>
+    <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car. Can you help me find one?">Ask us on WhatsApp</a></article>`;
   $("#empty").style.display="none";
-  $$("[data-wa2]").forEach(a=>{a.href=waLink(`Hi Eleven Motors, I'm interested in the ${a.dataset.wa2}. Is it still available and what is the best price?`);a.target="_blank";a.rel="noopener"});
+  $$("[data-wa2]").forEach(a=>{a.href=waLink(`Hi Eleven Motors, I saw the ${a.dataset.wa2} on your page. Is it available?`);a.target="_blank";a.rel="noopener"});
+  $$("#grid .btn-wa").forEach(addIcon);
+  $$("[data-avail]").forEach(a=>a.onclick=()=>track("check_availability",{car:a.dataset.avail}));
 }
+function addIcon(a){if(!a.querySelector(".wi"))a.insertAdjacentHTML("afterbegin",WA_ICON)}
 $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;$$(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");curType=b.dataset.type;render();track("filter",{type:curType})});
 $("#make").addEventListener("change",render);
+$$(".btn-wa:not(#grid .btn-wa),.wa-float").forEach(a=>{addIcon(a);a.addEventListener("click",()=>track("whatsapp_click",{}))});
 render();
 
 /* Quick lead form: 3 taps, contact last */
