@@ -226,6 +226,16 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 @media(max-width:900px){.wa-float{display:none}.top .hbook{display:none}.bar{grid-template-columns:1.3fr 1.2fr 1fr}.bar .btn-wa{font-size:.92rem}}
 @media(max-width:480px){.car .acts{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pulse,.wa-float{animation:none}}
+
+/* availability gate, notice strip, inline CTAs */
+.notice{background:var(--red);color:#fff;text-align:center;font-size:.86rem;padding:8px 16px;letter-spacing:.02em}
+.notice a{color:#fff;font-weight:500;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.inline-cta{margin-top:34px;padding:22px 24px;border:1px solid var(--line);border-radius:var(--r);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#fff}
+.dark .inline-cta{background:#111;border-color:#2a2a2a}
+.inline-cta p{font:400 1.3rem var(--serif)}
+.inline-cta div{display:flex;gap:10px;flex-wrap:wrap}
+#av-body .btn,#av-done .btn{width:100%;margin-top:14px}
+body:has(.modal.open) .wa-float{display:none}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .js .rv.in{opacity:1;transform:none}
@@ -248,6 +258,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
 </script>
 </head>
 <body>
+<div class="notice"><span>New cars arrive every week.</span> <a data-avail="any" href="#avail">Check what's available in 30 seconds →</a></div>
 <header class="top"><div class="wrap">
   <a class="logo" href="#top" aria-label="Eleven Motors home"><img src="assets/img/logo.png" alt="Eleven Motors" width="216" height="40"></a>
   <nav>
@@ -273,7 +284,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
       </ul>
       <div class="cta-row">
         <a class="btn btn-wa btn-lg pulse" data-wa="Hi Eleven Motors, I'd like to know what cars you have available.">Chat on WhatsApp</a>
-        <a class="btn btn-red btn-lg" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=hero" target="_blank" rel="noopener">Check availability</a>
+        <a class="btn btn-red btn-lg" data-avail="any" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=hero" target="_blank" rel="noopener">Check availability</a>
         <button class="btn btn-ghost" data-td>Book test drive</button>
       </div>
     </div>
@@ -342,7 +353,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">No match right now. We can find it for you.
     <div style="margin-top:14px"><a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm looking for a car that's not on your page. Can you help me find one?">Ask us to source it</a></div></div>
-  <div class="more"><a class="btn btn-red btn-lg" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=see_all" target="_blank" rel="noopener">Check availability of all vehicles →</a></div>
+  <div class="more"><a class="btn btn-red btn-lg" data-avail="any" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=see_all" target="_blank" rel="noopener">Check availability of all vehicles →</a></div>
 </div></section>
 
 <!-- REELS -->
@@ -352,14 +363,15 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <p class="sub rv">Real cars from our showroom floor. Tap one to ask about it.</p>
   <div class="reels">
     <figure class="reel rv"><video muted loop playsinline preload="none" data-src="assets/video/mercedes-gle.mp4" poster="assets/img/mercedes-gle.jpg"></video>
-      <figcaption>Mercedes-Benz GLE Coupe<a data-wa="Hi Eleven Motors, I saw the Mercedes GLE Coupe on your page. Is one available?">Ask →</a></figcaption></figure>
+      <figcaption>Mercedes-Benz GLE Coupe<a data-avail="gle-coupe" href="#avail">Check availability →</a></figcaption></figure>
     <figure class="reel rv"><video muted loop playsinline preload="none" data-src="assets/video/range-rover.mp4" poster="assets/img/range-rover.jpg"></video>
-      <figcaption>Range Rover Vogue<a data-wa="Hi Eleven Motors, I'm interested in the Range Rover Vogue. Is it available?">Ask →</a></figcaption></figure>
+      <figcaption>Range Rover Vogue<a data-avail="rr-vogue" href="#avail">Check availability →</a></figcaption></figure>
     <figure class="reel rv"><video muted loop playsinline preload="none" data-src="assets/video/toyota-rav4.mp4" poster="assets/img/toyota-rav4.jpg"></video>
-      <figcaption>Toyota RAV4<a data-wa="Hi Eleven Motors, I'm interested in a Toyota RAV4. What do you have?">Ask →</a></figcaption></figure>
+      <figcaption>Toyota RAV4<a data-avail="rav4" href="#avail">Check availability →</a></figcaption></figure>
     <figure class="reel rv"><video muted loop playsinline preload="none" data-src="assets/video/hero.mp4" poster="assets/img/hero.jpg"></video>
       <figcaption>Delivered with care<a data-wa="Hi Eleven Motors, I'd like to book a viewing.">Book →</a></figcaption></figure>
   </div>
+  <div class="inline-cta rv"><p>Like what you see? Stock changes daily.</p><div><button class="btn btn-red btn-lg" data-avail="any">Check availability</button><a class="btn btn-wa btn-lg" data-wa="Hi Eleven Motors, I'm interested in a car.">Chat on WhatsApp</a></div></div>
 </div></section>
 
 <!-- DETAILS -->
@@ -376,6 +388,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
     <figure class="rv"><img loading="lazy" src="assets/img/s-class-seats.jpg" alt="Diamond quilted leather seats"><figcaption>Quilted leather</figcaption></figure>
     <figure class="rv"><img loading="lazy" src="assets/img/land-rover-badge.jpg" alt="Land Rover badge"><figcaption>The badge</figcaption></figure>
   </div>
+  <div class="inline-cta rv"><p>Found something you love?</p><div><button class="btn btn-red btn-lg" data-avail="any">Check availability</button><button class="btn btn-ghost btn-lg" style="color:#111;border-color:#bbb" data-td>Book test drive</button></div></div>
 </div></section>
 
 <!-- NEW ARRIVALS BAND -->
@@ -457,7 +470,7 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <div class="wrap">
     <h2 class="rv">Your next car is waiting.</h2>
     <p class="rv">Pick a day. We'll have the car cleaned, fuelled and ready for your test drive.</p>
-    <div class="cta-row rv"><button class="btn btn-red btn-lg" data-td>Book my test drive</button><a class="btn btn-wa btn-lg" data-wa="Hi Eleven Motors, I'm interested in a car.">Chat on WhatsApp</a></div>
+    <div class="cta-row rv"><button class="btn btn-red btn-lg" data-avail="any">Check availability</button><button class="btn btn-ghost btn-lg" data-td>Book test drive</button><a class="btn btn-wa btn-lg" data-wa="Hi Eleven Motors, I'm interested in a car.">Chat on WhatsApp</a></div>
   </div>
 </div>
 
@@ -476,9 +489,34 @@ footer img{height:34px;margin:0 auto 14px;width:auto}
   <br>Hours: <span id="hours">Monday to Saturday, 9am to 5pm</span>
 </div></footer>
 
+
+<div class="modal" id="amodal" role="dialog" aria-modal="true" aria-labelledby="av-title">
+  <form class="formcard" id="avail" novalidate>
+    <button class="x" type="button" id="aclose" aria-label="Close">×</button>
+    <div id="av-body">
+      <h2 id="av-title">Check availability</h2>
+      <p>Tell us who you are and we'll open the live cars for you. A sales advisor can also confirm your car on WhatsApp.</p>
+      <label for="av-car">Car you're interested in</label>
+      <select id="av-car" name="car"></select>
+      <label for="av-name">Your name</label><input id="av-name" name="name" autocomplete="name" required>
+      <label for="av-phone">Phone / WhatsApp</label><input id="av-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
+      <label for="av-when">When do you want to buy?</label>
+      <select id="av-when" name="when"><option>This week</option><option>This month</option><option>In 1 to 3 months</option><option>Just browsing</option></select>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="err" id="av-err">Enter your name and a valid Kenyan phone number (e.g. 0712 345 678).</div>
+      <button class="btn btn-red" type="submit">Show me available cars</button>
+      <p class="consent">By continuing, you agree that Eleven Motors may contact you about cars. No spam.</p>
+    </div>
+    <div class="done" id="av-done"><div class="tick">✓</div><h2 id="av-thanks">Thank you!</h2>
+      <p>Your live cars should have opened in a new tab. If not, tap below. An advisor will follow up with you.</p>
+      <a class="btn btn-red" id="av-go" target="_blank" rel="noopener">See live available cars →</a>
+      <a class="btn btn-wa" id="av-wa" target="_blank" rel="noopener">Confirm on WhatsApp</a></div>
+  </form>
+</div>
+
 <div class="bar">
   <a class="btn btn-wa" data-wa="Hi Eleven Motors, I'm interested in a car.">WhatsApp</a>
-  <a class="btn btn-red" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=mobile_bar" target="_blank" rel="noopener">Check availability</a>
+  <a class="btn btn-red" data-avail="any" href="https://elevenmotorske.com/vehicles?utm_source=landing&utm_medium=mobile_bar" target="_blank" rel="noopener">Check availability</a>
   <button class="btn btn-ghost" data-td>Test drive</button>
 </div>
 
@@ -579,7 +617,6 @@ function render(){
   $("#empty").style.display="none";
   $$("[data-wa2]").forEach(a=>{a.href=waLink(`Hi Eleven Motors, I saw the ${a.dataset.wa2} on your page. Is it available?`);a.target="_blank";a.rel="noopener"});
   $$("#grid .btn-wa").forEach(addIcon);
-  $$("[data-avail]").forEach(a=>a.onclick=()=>track("check_availability",{car:a.dataset.avail}));
 }
 function addIcon(a){if(!a.querySelector(".wi"))a.insertAdjacentHTML("afterbegin",WA_ICON)}
 $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;$$(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");curType=b.dataset.type;render();track("filter",{type:curType})});
@@ -634,6 +671,45 @@ $("#td").addEventListener("submit",e=>{
   $("#td-wa").href=waLink(msg); $("#td-body").style.display="none"; $("#td-ok").style.display="block";
   window.open(waLink(msg),"_blank");
 });
+
+
+/* ---- Check availability: lead form first, then the live vehicles page ---- */
+const am=$("#amodal"),LD="el_lead_done";
+const flagDone=()=>{try{sessionStorage.setItem(LD,"1")}catch(e){}};
+const isDone=()=>{try{return sessionStorage.getItem(LD)==="1"}catch(e){return false}};
+$("#av-car").innerHTML='<option value="any">Any car / not sure yet</option>'+CARS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
+function openAvail(id,from){
+  $("#av-body").style.display="";$("#av-done").style.display="none";$("#av-err").style.display="none";
+  $("#av-car").value=[...$("#av-car").options].some(o=>o.value===id)?id:"any";
+  am.dataset.from=from||"button";am.classList.add("open");track("open_availability",{car:id,from:from||"button"});
+  setTimeout(()=>$("#av-name").focus(),50);
+}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-avail]");if(!a)return;e.preventDefault();openAvail(a.dataset.avail,"click")});
+$("#aclose").onclick=()=>am.classList.remove("open");
+am.addEventListener("click",e=>{if(e.target===am)am.classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")am.classList.remove("open")});
+$("#avail").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=Object.fromEntries(new FormData(e.target)),ph=normPhone(f.phone),ok=f.name.trim().length>1&&ph;
+  $("#av-err").style.display=ok?"none":"block"; if(!ok)return;
+  const car=$("#av-car").selectedOptions[0].textContent;
+  submitLead({source:"check-availability",name:f.name.trim(),phone:ph,car,timeline:f.when,trigger:am.dataset.from,company:f.company});
+  flagDone();
+  const msg=`Hi Eleven Motors, I'm ${f.name.trim()}. Is the ${f.car==="any"?"car I'm looking for":car} available? I plan to buy: ${f.when}. My number: ${ph}`;
+  $("#av-go").href=CONFIG.vehicles;$("#av-wa").href=waLink(msg);$("#av-thanks").textContent=`Thank you, ${f.name.trim().split(" ")[0]}!`;
+  $("#av-body").style.display="none";$("#av-done").style.display="block";
+  window.open(CONFIG.vehicles,"_blank");
+});
+/* mark lead as done after any other form too */
+["#quick","#alert","#td"].forEach(s=>$(s).addEventListener("submit",()=>setTimeout(flagDone,50)));
+/* exit-intent (desktop) or 40s on page (once per visit, never after a lead) */
+let shownExit=false;
+function maybeExit(from){
+  if(shownExit||isDone()||document.querySelector(".modal.open"))return;
+  shownExit=true;openAvail("any",from);
+}
+document.addEventListener("mouseout",e=>{if(e.clientY<=0&&!e.relatedTarget&&innerWidth>900&&performance.now()>8000)maybeExit("exit-intent")});
+setTimeout(()=>maybeExit("timer"),40000);
 
 /* progressive enhancement: reveal, counters, marquee, lazy video */
 document.documentElement.classList.add("js");
